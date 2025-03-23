@@ -86,3 +86,4 @@ The project relies on the following Python packages:
 ## Version Control
 
 * Continuously use `git commit` to save and log all changes and events. This ensures that your project's history is well-documented and that you can easily revert to previous versions if needed.
+* 
