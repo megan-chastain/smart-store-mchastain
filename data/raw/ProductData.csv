@@ -1,0 +1,9 @@
+ProductID,ProductName,Category,UnitPrice,StockQuantity,Supplier
+108,protector,Electronics,12.56,12,BestBuy
+105,football,Sports,19.78,5,Amazon
+103,cable,Electronics,22.76,25,BestBuy
+102,hoodie,Clothing,39.1,10,Gap
+104,hat,Clothing,43.1,35,Gap
+107,jacket,Clothing,67.02,10,Gap
+106,controller,Electronics,88.98,2,BestBuy
+101,laptop,Electronics,793.12,6,BestBuy
