@@ -86,4 +86,45 @@ The project relies on the following Python packages:
 ## Version Control
 
 * Continuously use `git commit` to save and log all changes and events. This ensures that your project's history is well-documented and that you can easily revert to previous versions if needed.
-* 
+* ## Data Cleaning Scripts
+
+## Data Cleaning Scripts
+
+Run scripts to clean your data and perform the following operations:
+
+* **Remove Duplicates:** Eliminate any duplicate entries within the dataset to ensure data integrity.
+* **Handle Missing Values:** Address missing data points through imputation, removal, or other appropriate methods.
+* **Remove Outliers:** Identify and remove or adjust outlier data points that may skew analysis.
+* **Ensure Consistent Formatting:** Standardize data formats across all columns for uniformity and ease of analysis.
+
+To execute the Python script located at `py scripts\file.py`, (enter your own file names) use the following command:
+
+```bash
+py scripts\file.py
+
+To temporarily add local imports to your Python script, you can use the following path manipulation:
+
+```python
+import sys
+import pathlib
+from pathlib import Path
+
+PROJECT_ROOT = str(pathlib.Path(__file__).resolve().parent.parent.parent)
+sys.path.append(PROJECT_ROOT)
+
+# Now you can import modules from your project's root directory
+# Example: from your_module import your_function
+To ensure that the project's root directory is included in the Python module search path, use the following code snippet:
+
+```python
+import sys
+import pathlib
+
+PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
+
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+    To import the `logger` from the `utils.logger` module, use the following import statement:
+
+```python
+from utils.logger import logger  # noqa: E402
