@@ -1,49 +1,57 @@
-# smart-store-mchastain
-BI Python project
-# Smart Sales Project Setup
+# smart-store-mchastain: BI Python Project
 
-These starter files provide the foundation for your Smart Sales project. To get started, follow these steps on a Windows machine, executing all commands from a VSC terminal within the main project directory.
+This document outlines the setup and development process for the Smart Sales project, a Business Intelligence (BI) Python project.
 
-**Follow these steps in order:**
+## Smart Sales Project Setup
+
+These starter files provide the foundation for your Smart Sales project. To get started, follow these steps on a Windows machine, executing all commands from a VS Code terminal within the main project directory.
+
+**Project Initialization:**
 
 1.  **Create a GitHub Repository:**
-    * Create a new repository on GitHub.
+    * Create a new repository on GitHub to manage your project's version control.
 
 2.  **Clone the Repository:**
-    * Clone the repository to a folder on your C-drive using the following command (replace with your repository URL):
-       
+    * Clone the repository to a folder on your C-drive using the following command (replace `<your_github_repo_url>` with your actual repository URL):
+
+        ```bash
         git clone <your_github_repo_url>
-      
+        ```
 
 3.  **Create a Virtual Environment:**
     * To isolate your project's dependencies, create a virtual environment named `.venv` by running:
-      
+
+        ```bash
         py -m venv .venv
-    
+        ```
 
 4.  **Activate the Virtual Environment:**
     * Activate the virtual environment to use its isolated packages:
-     
+
+        ```bash
         .venv\Scripts\activate
-     
+        ```
 
 5.  **Install Required Packages:**
     * Install all necessary libraries listed in the `requirements.txt` file:
-        
+
+        ```bash
         py -m pip install --upgrade -r requirements.txt
-       
+        ```
 
 6.  **Optional: Verify Environment Setup:**
     * You can verify that your virtual environment is set up correctly by running:
-       
+
+        ```bash
         py -m datafun_venv_checker.venv_checker
-       
+        ```
 
 7.  **Run the Data Preparation Script:**
     * Execute the initial data preparation script to prepare your data:
-        
+
+        ```bash
         py scripts/data_prep.py
-        
+        ```
 
 ## Initial Software Libraries
 
@@ -86,45 +94,21 @@ The project relies on the following Python packages:
 ## Version Control
 
 * Continuously use `git commit` to save and log all changes and events. This ensures that your project's history is well-documented and that you can easily revert to previous versions if needed.
-* ## Data Cleaning Scripts
 
-## Data Cleaning Scripts
+## Data Cleaning Process
+
+This section details the data cleaning process using Python's `pandas` library.
+
+### Data Cleaning Scripts
 
 Run scripts to clean your data and perform the following operations:
 
-* **Remove Duplicates:** Eliminate any duplicate entries within the dataset to ensure data integrity.
-* **Handle Missing Values:** Address missing data points through imputation, removal, or other appropriate methods.
-* **Remove Outliers:** Identify and remove or adjust outlier data points that may skew analysis.
-* **Ensure Consistent Formatting:** Standardize data formats across all columns for uniformity and ease of analysis.
+* **Remove Duplicates:** Eliminate any duplicate entries within the dataset.
+* **Handle Missing Values:** Address missing data points through imputation or removal.
+* **Remove Outliers:** Identify and adjust outlier data points.
+* **Ensure Consistent Formatting:** Standardize data formats for uniformity.
 
-To execute the Python script located at `py scripts\file.py`, (enter your own file names) use the following command:
+To execute a Python script (e.g., `file.py`) within the `scripts` folder, use:
 
 ```bash
 py scripts\file.py
-
-To temporarily add local imports to your Python script, you can use the following path manipulation:
-
-```python
-import sys
-import pathlib
-from pathlib import Path
-
-PROJECT_ROOT = str(pathlib.Path(__file__).resolve().parent.parent.parent)
-sys.path.append(PROJECT_ROOT)
-
-# Now you can import modules from your project's root directory
-# Example: from your_module import your_function
-To ensure that the project's root directory is included in the Python module search path, use the following code snippet:
-
-```python
-import sys
-import pathlib
-
-PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
-
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.append(str(PROJECT_ROOT))
-    To import the `logger` from the `utils.logger` module, use the following import statement:
-
-```python
-from utils.logger import logger  # noqa: E402
