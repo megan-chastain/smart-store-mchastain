@@ -112,3 +112,82 @@ To execute a Python script (e.g., `file.py`) within the `scripts` folder, use:
 
 ```bash
 py scripts\file.py
+
+# Creating a Data Warehouse (SQLite)
+
+This section describes how to create a SQLite database to serve as a simple data warehouse using a Python script.
+
+## Steps
+
+1.  **Create `create_dw.py`:**
+    * Create a file named `create_dw.py` inside the `scripts` folder of your project.
+
+2.  **Add Python Code:**
+    * Add the following Python code to `create_dw.py`. This script uses the `sqlite3` library to create tables within an SQLite database.
+
+    ```python
+    import sqlite3
+
+    def create_tables(db_path):
+        """Creates tables in the SQLite database."""
+
+        try:
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+
+            # Example: Create a 'sales' table
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS sales (
+                    sale_id INTEGER PRIMARY KEY,
+                    product_id INTEGER,
+                    customer_id INTEGER,
+                    sale_date TEXT,
+                    quantity INTEGER,
+                    price REAL
+                )
+            ''')
+
+            # Example: Create a 'products' table
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS products (
+                    product_id INTEGER PRIMARY KEY,
+                    product_name TEXT,
+                    category TEXT
+                )
+            ''')
+
+            #Example: Create a customers table
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS customers (
+                    customer_id INTEGER PRIMARY KEY,
+                    customer_name TEXT,
+                    city TEXT
+                )
+            ''')
+
+            conn.commit()
+            print(f"Tables created successfully in {db_path}")
+
+        except sqlite3.Error as e:
+            print(f"An error occurred: {e}")
+
+        finally:
+            if conn:
+                conn.close()
+
+    if __name__ == "__main__":
+        db_path = "smart_store_dw.db"  # Database file name
+        create_tables(db_path)
+
+    ```
+
+3.  **Run the Script:**
+    * Open your terminal or command prompt.
+    * Navigate to your project's root directory.
+    * Execute the script using the following command:
+
+        ```bash
+        py scripts/create_dw.py
+        ```
+
+    * This will create a file named `smart_store_dw.db
