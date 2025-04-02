@@ -418,3 +418,15 @@ dtype: int64
 2025-03-27 17:34:54.419 | INFO     | __main__:main:202 - ==================================
 2025-03-27 17:34:54.420 | INFO     | __main__:main:203 - FINISHED prepare_customers_data.py
 2025-03-27 17:34:54.421 | INFO     | __main__:main:204 - ==================================
+2025-04-01 16:28:53.058 | INFO     | utils.logger:<module>:39 - Logging to file: logs\project_log.log
+2025-04-01 16:28:53.059 | INFO     | __main__:main:43 - Starting data warehouse creation...
+2025-04-01 16:28:53.068 | INFO     | __main__:create_dw:31 - Data warehouse created successfully.
+2025-04-01 16:28:53.069 | INFO     | __main__:main:45 - Data warehouse creation complete.
+2025-04-01 16:32:07.675 | INFO     | utils.logger:<module>:39 - Logging to file: logs\project_log.log
+2025-04-01 16:32:07.676 | INFO     | __main__:<module>:33 - Existing database data\dw\smart_sales.db deleted.
+2025-04-01 16:32:07.677 | INFO     | __main__:main:115 - Starting data warehouse creation...
+2025-04-01 16:32:07.693 | INFO     | __main__:create_customer_table:48 - customer table created.
+2025-04-01 16:32:07.698 | INFO     | __main__:create_product_table:63 - product table created.
+2025-04-01 16:32:07.704 | INFO     | __main__:create_sale_table:84 - sale table created.
+2025-04-01 16:32:07.705 | INFO     | __main__:create_dw:103 - Data warehouse created successfully.
+2025-04-01 16:32:07.705 | INFO     | __main__:main:117 - Data warehouse creation complete.
