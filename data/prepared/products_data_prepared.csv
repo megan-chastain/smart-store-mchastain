@@ -1,4 +1,4 @@
-productid,productname,category,unitprice,stockquantity,supplier
+product_id,product_name,category,unit_price_usd,stock_quantity,supplier
 108,protector,Electronics,12.56,12,BestBuy
 105,football,Sports,19.78,5,Amazon
 103,cable,Electronics,22.76,25,BestBuy

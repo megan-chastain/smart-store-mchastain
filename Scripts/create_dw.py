@@ -58,10 +58,10 @@ def create_product_table(cursor: sqlite3.Cursor) -> None:
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS product (
                 product_id INTEGER PRIMARY KEY,
-                name TEXT NOT NULL,
+                product_name TEXT NOT NULL,
                 category TEXT,
                 unit_price_usd REAL NOT NULL,
-                stock_quanity INTEGER,
+                stock_quantity INTEGER,
                 supplier TEXT
             )
         """)
@@ -80,7 +80,6 @@ def create_sale_table(cursor: sqlite3.Cursor) -> None:
                 store_id INTEGER,
                 campaign_id INTEGER,
                 sale_date DATE,
-                quantity INTEGER NOT NULL,
                 sale_amount_usd INTEGER NOT NULL,
                 bonus_points INTEGER,
                 payment_type TEXT,

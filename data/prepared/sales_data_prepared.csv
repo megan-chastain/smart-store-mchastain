@@ -1,4 +1,4 @@
-saledate,customerid,productid,storeid,campaignid,saleamount,bonuspoints,paymenttype
+sale_date,customer_id,product_id,store_id,campaign_id,sale_amount_usd,bonus_points,payment_type
 1/25/2024,1001,101,401,0,2379.36,50,Cash
 3/20/2024,1001,101,401,0,7138.08,75,Cash
 4/19/2024,1001,101,401,0,6344.96,75,Cash

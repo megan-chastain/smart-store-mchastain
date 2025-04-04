@@ -446,3 +446,35 @@ dtype: int64
 2025-04-04 17:22:58.040 | INFO     | __main__:create_sale_table:91 - sale table created.
 2025-04-04 17:22:58.041 | INFO     | __main__:create_dw:110 - Data warehouse created successfully.
 2025-04-04 17:22:58.042 | INFO     | __main__:main:124 - Data warehouse creation complete.
+2025-04-04 18:11:18.746 | INFO     | utils.logger:<module>:39 - Logging to file: logs\project_log.log
+2025-04-04 18:11:18.747 | INFO     | __main__:<module>:33 - Existing database data\dw\smart_sales.db deleted.
+2025-04-04 18:11:18.748 | INFO     | __main__:main:122 - Starting data warehouse creation...
+2025-04-04 18:11:18.760 | INFO     | __main__:create_customer_table:51 - customer table created.
+2025-04-04 18:11:18.767 | INFO     | __main__:create_product_table:68 - product table created.
+2025-04-04 18:11:18.776 | INFO     | __main__:create_sale_table:91 - sale table created.
+2025-04-04 18:11:18.776 | INFO     | __main__:create_dw:110 - Data warehouse created successfully.
+2025-04-04 18:11:18.777 | INFO     | __main__:main:124 - Data warehouse creation complete.
+2025-04-04 18:13:38.999 | INFO     | utils.logger:<module>:39 - Logging to file: logs\project_log.log
+2025-04-04 18:13:39.001 | INFO     | __main__:<module>:33 - Existing database data\dw\smart_sales.db deleted.
+2025-04-04 18:13:39.001 | INFO     | __main__:main:122 - Starting data warehouse creation...
+2025-04-04 18:13:39.014 | INFO     | __main__:create_customer_table:51 - customer table created.
+2025-04-04 18:13:39.024 | INFO     | __main__:create_product_table:68 - product table created.
+2025-04-04 18:13:39.034 | INFO     | __main__:create_sale_table:91 - sale table created.
+2025-04-04 18:13:39.035 | INFO     | __main__:create_dw:110 - Data warehouse created successfully.
+2025-04-04 18:13:39.035 | INFO     | __main__:main:124 - Data warehouse creation complete.
+2025-04-04 18:14:37.564 | INFO     | utils.logger:<module>:39 - Logging to file: logs\project_log.log
+2025-04-04 18:14:37.565 | INFO     | __main__:<module>:33 - Existing database data\dw\smart_sales.db deleted.
+2025-04-04 18:14:37.566 | INFO     | __main__:main:122 - Starting data warehouse creation...
+2025-04-04 18:14:37.576 | INFO     | __main__:create_customer_table:51 - customer table created.
+2025-04-04 18:14:37.583 | INFO     | __main__:create_product_table:68 - product table created.
+2025-04-04 18:14:37.592 | INFO     | __main__:create_sale_table:91 - sale table created.
+2025-04-04 18:14:37.592 | INFO     | __main__:create_dw:110 - Data warehouse created successfully.
+2025-04-04 18:14:37.593 | INFO     | __main__:main:124 - Data warehouse creation complete.
+2025-04-04 18:17:07.225 | INFO     | utils.logger:<module>:39 - Logging to file: logs\project_log.log
+2025-04-04 18:17:07.227 | INFO     | __main__:<module>:33 - Existing database data\dw\smart_sales.db deleted.
+2025-04-04 18:17:07.227 | INFO     | __main__:main:121 - Starting data warehouse creation...
+2025-04-04 18:17:07.242 | INFO     | __main__:create_customer_table:51 - customer table created.
+2025-04-04 18:17:07.253 | INFO     | __main__:create_product_table:68 - product table created.
+2025-04-04 18:17:07.262 | INFO     | __main__:create_sale_table:90 - sale table created.
+2025-04-04 18:17:07.263 | INFO     | __main__:create_dw:109 - Data warehouse created successfully.
+2025-04-04 18:17:07.264 | INFO     | __main__:main:123 - Data warehouse creation complete.
