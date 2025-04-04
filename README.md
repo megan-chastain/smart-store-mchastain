@@ -191,3 +191,48 @@ This section describes how to create a SQLite database to serve as a simple data
         ```
 
     * This will create a file named `smart_store_dw.db
+    * db script must be in perfect alignment with your data or you will get errors.
+
+    # Populating Star Schema Tables with SQL
+
+This section outlines the steps to create and run an SQL script that populates tables in a star schema within your SQLite data warehouse. We will assume you have a `smart_store_dw.db` database created (as per previous instructions) and that you have "prepared" data available (though the exact format and location are placeholders here - you'll need to adjust based on your actual prepared data).
+
+**1. Create the SQL Script (`populate_dw.sql` in `scripts` folder):**
+
+Create a new file named `populate_dw.sql` inside your `scripts` folder. This script will contain the `INSERT INTO` statements to populate your fact and dimension tables.
+
+```sql
+-- scripts/populate_dw.sql
+
+-- Populate the DimCustomers table
+INSERT INTO DimCustomers (CustomerID, CustomerName, City)
+SELECT DISTINCT
+    customer_id,
+    customer_name,
+FROM prepared_customers_data; -- Replace with your actual prepared data source/table
+
+-- Populate the DimProducts table
+INSERT INTO DimProducts (ProductID, ProductName, Category)
+SELECT DISTINCT
+    product_id,
+    product_name,
+    category
+FROM prepared_products_data; -- Replace with your actual prepared data source/table
+
+FROM prepared_sales_data; -- Replace with your actual prepared data source/table
+
+-- Populate the FactSales table
+INSERT INTO FactSales (Sale, Product, Customer)
+    s.sale_id AS Sale,
+    p.product_id AS Product,
+    c.customer_id 
+FROM prepared_sales_data s -- Replace with your actual prepared sales data source/table
+JOIN prepared_products_data p ON s.product_id = p.product_id -- Assuming a join is needed
+JOIN prepared_customers_data c ON s.customer_id = c.customer_id; -- Assuming a join is needed
+
+-- You might need to adjust the joins and column names based on your prepared data structure.
+-- Ensure the column names in these SELECT statements EXACTLY match the column names
+-- in your prepared data sources.
+-- Also, ensure the target table column names in the INSERT INTO statements
+-- EXACTLY match the column names defined in your data warehouse schema
+-- (e.g., in your create_dw.py script).
