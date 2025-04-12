@@ -236,3 +236,123 @@ JOIN prepared_customers_data c ON s.customer_id = c.customer_id; -- Assuming a j
 -- Also, ensure the target table column names in the INSERT INTO statements
 -- EXACTLY match the column names defined in your data warehouse schema
 -- (e.g., in your create_dw.py script).
+Initial set up of PowerBI and SQLite
+    
+1.  Open **ODBC Data Sources (64-bit)** from the Start Menu.
+2.  Click the **System DSN** tab.
+3.  Click **Add...** → choose **SQLite3 ODBC Driver** (or whatever data store you are using) → click **Finish**.
+4.  Name it **SmartSalesDSN** (or any name you prefer).
+5.  Click **Browse** and select your database file: e.g., `smart_sales.db` (or whatever you named it).
+6.  Click **OK** to save.
+
+To link datawarehouse to PowerBI:
+
+1.  Open **Power BI Desktop**.
+2.  Click **Get Data** (top left) → Select **ODBC** from the list.
+3.  Choose the DSN you created in Task 1 (e.g., **SmartSalesDSN**).
+4.  Click **OK**. Wait a moment. Power BI will show a list of available tables.
+5.  Select the tables you want to analyze - for most of us:
+    * **Customer table**
+    * **Product table**
+    * **Sales table**
+6.  Click **Load** to bring the tables into Power BI.
+7.  Switch to **Model view** (left panel) to see how the tables are connected.
+
+To perform a query:
+
+1.  Open **Power BI Desktop**.
+2.  In the **Home** tab, click **Transform Data** to open **Power Query Editor**.
+3.  In Power Query, click **Advanced Editor** (top menu).
+4.  **Option 1 (Using SQL - Requires Data Source Connection):**
+    Delete any code in the editor and replace it with your SQL query (example below). You **must** have already established a connection to your data source (e.g., via ODBC) for this to work. You will need to use your actual table names and column names for the SQL to function correctly with your data source.
+
+    ```sql
+    SELECT c.name, SUM(s.amount) AS total_spent
+    FROM sale s
+    JOIN customer c ON s.customer_id = c.customer_id
+    GROUP BY c.name
+    ORDER BY total_spent DESC;
+    ```
+
+    **Option 2 (Using M-code - More Power BI Native):**
+    Delete any code in the editor and replace it with the following M-code. **Note:** This code assumes you have an ODBC data source named "smart_sales_DSN" with tables named "customer" and "sale" containing the specified columns. Adjust the data source name and table/column names to match your setup.
+
+    ```m
+    let
+        Source = Odbc.DataSource("dsn=smart_sales_DSN", [HierarchicalNavigation=true]),
+        customer_Table = Source{[Name="customer",Kind="Table"]}[Data],
+        JoinedSalesAndCustomers = Table.Join(
+            customer_Table,
+            {"customer_id"},
+            Source{[Name="sale",Kind="Table"]}[Data],
+            {"customer_id"},
+            JoinKind.Inner
+        ),
+        GroupedCustomers = Table.Group(
+            JoinedSalesAndCustomers,
+            {"name"},
+            {{"Total Spent", each List.Sum([sale_amount_usd]), type number}}
+        ),
+        SortedCustomers = Table.Sort(GroupedCustomers, {{"Total Spent", Order.Descending}})
+    in
+        SortedCustomers
+    ```
+
+5.  Click **Done**.
+6.  Rename the new query (on the left) to something like **Top Customers** or whatever you are focusing on.
+7.  Click **Close & Apply** (upper left) to return to the report view.
+8.  You can now use this table in visuals (e.g., bar chart).
+
+To slice, dice, and drilldown:
+
+
+**Windows (Power BI) - Slice, Dice, and Drilldown**
+
+**Slicing:** Add a date range slicer
+**Dicing:** Create a matrix visual for sales by product & region
+**Drilldown:** Enable drill-through to explore sales by year → quarter → month
+
+Slicing
+
+Since SQLite doesn’t have real "Date" fields, use Power BI's Transform Data to extract parts of the date for slicing, dicing, and drilldown.
+
+1.  Click **Transform Data** to open Power Query.
+2.  Select the **sales** table.
+3.  Select the **order_date** column (or any "date" field).
+4.  On the top menu, click **Add Column** → **Date** → **Year**.
+5.  Then click **Add Column** → **Date** → **Quarter**.
+6.  Then click **Add Column** → **Date** → **Month** → **Name of Month**.
+7.  Click **Close & Apply** to save changes and return to the report view.
+8.  In Power BI, go to the **Report view** (center icon on the left).
+9.  From the **Visualizations** pane, click on the **Slicer** icon.
+10. Drag a **date field** into the slicer.
+11. If it doesn’t show a range, click the dropdown (upper-right corner of slicer) and select **Between** to enable a date range slider.
+
+Dicing 
+
+To explore sales by product attributes (e.g. category and region or other characteristics), we’ll create a Matrix visual in Power BI.
+
+1.  Go to the **Report view**.
+2.  From the **Visualizations** pane, click the **Matrix** visual.
+3.  Drag your first product feature (e.g., **category**) to the **Rows** field well.
+4.  Drag your second product feature (e.g., **region**) to the **Columns** field well.
+5.  Drag a **numeric field** to the **Values** field well.
+6.  *Optional:* Format the numeric values by clicking the column dropdown in the **Values** area.
+
+This matrix will help us “dice” the data and break it down by two categorical dimensions: product and region.
+
+Drilldown
+
+To explore sales over time, we’ll use a column or line chart and enable drilldown so we can click into sales by year, quarter, and month.
+
+1.  Go to the **Report view**.
+2.  From the **Visualizations** pane, click on either the **Clustered Column Chart** or **Line Chart**.
+3.  Drag your **Year**, **Quarter**, and **Month** fields (created earlier from **order_date**) into the **X-Axis** or **Axis** field in that order:
+    * First: **order\_year**
+    * Then: **order\_quarter**
+    * Then: **order\_month**
+4.  Drag your **numeric value** (e.g., **total amount**) into the **Values** area.
+5.  At the top left of the chart, click the **drilldown arrow icon** (a split-down arrow).
+6.  Click on a bar or line point in the chart to drill from **Year** → **Quarter** → **Month**.
+7.  To move back up, click the **up arrow** near the same spot.
+8.  If nothing happens when clicking, make sure the chart supports hierarchy and the drilldown mode is active (look for the split arrow).
