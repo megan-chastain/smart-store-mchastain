@@ -349,10 +349,18 @@ To explore sales over time, we’ll use a column or line chart and enable drilld
 2.  From the **Visualizations** pane, click on either the **Clustered Column Chart** or **Line Chart**.
 3.  Drag your **Year**, **Quarter**, and **Month** fields (created earlier from **order_date**) into the **X-Axis** or **Axis** field in that order:
     * First: **order\_year**
-    * Then: **order\_quarter**
+    * Then: **order\_quarter*
     * Then: **order\_month**
 4.  Drag your **numeric value** (e.g., **total amount**) into the **Values** area.
 5.  At the top left of the chart, click the **drilldown arrow icon** (a split-down arrow).
 6.  Click on a bar or line point in the chart to drill from **Year** → **Quarter** → **Month**.
 7.  To move back up, click the **up arrow** near the same spot.
 8.  If nothing happens when clicking, make sure the chart supports hierarchy and the drilldown mode is active (look for the split arrow).
+
+![image](https://github.com/user-attachments/assets/8ab796f6-b978-47fa-a9f3-527df4715478)
+
+![image](https://github.com/user-attachments/assets/0617bed0-e6ca-423b-97d2-d176fe460f9b)
+
+![image](https://github.com/user-attachments/assets/c4026e94-2ace-481b-a205-4de02b79d810)
+
+
