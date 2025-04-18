@@ -303,6 +303,7 @@ This matrix will help us “dice” the data and break it down by two categorica
 
 *Drilldown in Power BI (Year → Quarter → Month)
 To explore sales over time, we’ll use a column or line chart and enable drilldown so we can click into sales by year, quarter, and month.
+<<<<<<< HEAD
 Go to the Report view.
 From the Visualizations pane, click on either the Clustered Column Chart or Line Chart.
 Drag your Year, Quarter, and Month fields (created earlier from order_date) into the X-Axis or Axis field in that order:
@@ -314,3 +315,68 @@ At the top left of the chart, click the drilldown arrow icon (a split-down arrow
 Click on a bar or line point in the chart to drill from Year → Quarter → Month.
 To move back up, click the up arrow near the same spot.
 If nothing happens when clicking, make sure the chart supports hierarchy and the drilldown mode is active (look for the split arrow).
+=======
+
+1.  Go to the **Report view**.
+2.  From the **Visualizations** pane, click on either the **Clustered Column Chart** or **Line Chart**.
+3.  Drag your **Year**, **Quarter**, and **Month** fields (created earlier from **order_date**) into the **X-Axis** or **Axis** field in that order:
+    * First: **order\_year**
+    * Then: **order\_quarter*
+    * Then: **order\_month**
+4.  Drag your **numeric value** (e.g., **total amount**) into the **Values** area.
+5.  At the top left of the chart, click the **drilldown arrow icon** (a split-down arrow).
+6.  Click on a bar or line point in the chart to drill from **Year** → **Quarter** → **Month**.
+7.  To move back up, click the **up arrow** near the same spot.
+8.  If nothing happens when clicking, make sure the chart supports hierarchy and the drilldown mode is active (look for the split arrow).
+
+![image](https://github.com/user-attachments/assets/8ab796f6-b978-47fa-a9f3-527df4715478)
+
+![image](https://github.com/user-attachments/assets/0617bed0-e6ca-423b-97d2-d176fe460f9b)
+
+![image](https://github.com/user-attachments/assets/c4026e94-2ace-481b-a205-4de02b79d810)
+
+
+
+
+## Business Goal
+
+The goal for my project is to see sales performance by store.
+
+## Data Source
+
+**What information did you start with (prepared data, data warehouse, or pre-computed cube)?**
+
+I started with prepared data from my personal database.
+
+**Clearly indicate which columns of which tables were used.**
+
+I used the `Store ID` and `Sale amount` columns from the `Sale` table.
+
+## Tools
+
+**Tell us what tools you used and why.**
+
+I used data that I prepared in VS Code and used Power BI to visualize it. Power BI was chosen for its user-friendly interface and powerful visualization capabilities, making it easy to create interactive graphs from the sales data.
+
+## Workflow & Logic
+
+**Describe the dimensions and aggregations - the logic needed for your analysis.**
+
+The primary dimension for this analysis is `Store ID`. The aggregation performed on the `Sale amount` column is a summation to determine the total sales for each unique store.
+
+**If using a graphical tool like Power BI or Tableau Prep, use screenshots to show your work.**
+![alt text](image-2.png)
+
+*(Since I cannot directly interact with Power BI or include screenshots here, I will describe the process as if I were using the tool.)*
+
+In Power BI, the workflow involved:
+
+1.  **Connecting to the Data Source:** Establishing a connection to the database containing the `Sale` table.
+2.  **Selecting Fields:** In the "Visualizations" pane, a bar chart visual was selected. The `Store ID` column was dragged to the "Axis" field well, and the `Sale amount` column was dragged to the "Values" field well. Power BI automatically aggregated the `Sale amount` by summing it for each unique `Store ID`.
+
+## Results
+
+**Present your insights with narrative and visualizations.**
+
+Based on the data visualized in the following graph, we can observe the total sales performance for each store. The height of each bar represents the total `Sale amount` for a specific `Store ID`.
+![alt text](image-1.png)
