@@ -22,7 +22,7 @@ These starter files provide the foundation for your Smart Sales project. To get 
     * To isolate your project's dependencies, create a virtual environment named `.venv` by running:
 
         ```bash
-        py -m venv .venv
+    py -m venv .venv
         ```
 
 4.  **Activate the Virtual Environment:**
